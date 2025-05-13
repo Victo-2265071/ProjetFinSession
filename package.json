@@ -1,5 +1,5 @@
 {
-  "name": "ex04_pokemon_api",
+  "name": "projet_fin_session_sw_2025",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -16,7 +16,7 @@
     "express": "^4.21.2",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "pg": "^8.16.0"
+    "postgre": "^0.1.8"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
