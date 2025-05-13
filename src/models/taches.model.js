@@ -73,7 +73,7 @@ function ModifierStatutTache(tacheId, utilisateurId, complete) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results.rows);
+            resolve(results.rows[0]);
         });
     });
 }
@@ -86,7 +86,7 @@ function SupprimerTache(tacheId, utilisateurId) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results.rows);
+            resolve(results.rows[0]);
         });
     });
 }
@@ -101,7 +101,7 @@ function CreerSousTache(tacheId, titre, utilisateurId) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results.rows);
+            resolve(results.rows[0]);
         });
     });
 }
@@ -115,7 +115,7 @@ function ModifierSousTache(sousTacheId, titre, utilisateurId) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results.rows);
+            resolve(results.rows[0]);
         });
     });
 }
@@ -129,7 +129,7 @@ function ModifierStatutSousTache(sousTacheId, utilisateurId, complete) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results.rows);
+            resolve(results.rows[0]);
         });
     });
 }
@@ -143,7 +143,7 @@ function SupprimerSousTache(sousTacheId, utilisateurId) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results.rows);
+            resolve(results.rows[0]);
         });
     });
 }
