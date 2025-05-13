@@ -34,8 +34,11 @@ const ajoutertache = async (req, res) => {
     const { titre, description, dateEcheance } = req.body;
 
     try {
-        const taches = await tachesModel.CreerTache(utilisateurId, titre, description, dateEcheance);
-        res.status(200).json(taches);
+        const tache = await tachesModel.CreerTache(utilisateurId, titre, description, dateEcheance);
+        res.status(200).json({
+            message: "Tâche créée avec succès",
+            tache: tache
+        });
     } catch (err) {
         console.error("Erreur lors de la création de la tâche :", err);
         res.status(500).json({ message: "Erreur serveur lors de la création de la tâche." });

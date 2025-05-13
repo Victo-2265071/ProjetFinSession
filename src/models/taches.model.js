@@ -45,7 +45,7 @@ function CreerTache(utilisateurId, titre, description, dateEcheance) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results.rows[0].id);
+            resolve(results.rows[0]);
         });
     });
 }
