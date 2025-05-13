@@ -4,6 +4,10 @@ import utilisateurModel from "../models/utilisateur.model.js"
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 
+// =====================
+// GESTION TACHES
+// =====================
+
 const affichertaches = async (req, res) => {
     const utilisateurId = req.utilisateurId;
     const afficherToutes = req.query.toutes === "true";
@@ -94,6 +98,10 @@ const supprimertache = async (req, res) => {
     }
 };
 
+// =====================
+// GESTION SOUS TACHES
+// =====================
+
 const ajoutersoustache = async (req, res) => {
     const utilisateurId = req.utilisateurId;
     const tacheId = parseInt(req.params.id);
@@ -160,6 +168,11 @@ const supprimersoustache = async (req, res) => {
     }
 };
 
+
+// =====================
+// GESTION UTILISATEURS
+// =====================
+
 const ajouterutilisateur = async (req, res) => {
     const { nom, prenom, courriel, motdepasse } = req.body;
 
@@ -181,9 +194,9 @@ const ajouterutilisateur = async (req, res) => {
         const cle_api = crypto.randomBytes(12).toString("hex");
 
         // 4. Ajouter l’utilisateur
-        await utilisateurModel.AjouterUtilisateur(nom, prenom, courriel, motdepasseHashe, cle_api);
+        const utilisateur = await utilisateurModel.AjouterUtilisateur(nom, prenom, courriel, motdepasseHashe, cle_api);
 
-        return res.status(201).json({ message: "Utilisateur créé", cle_api });
+        return res.status(201).json({ message: "Utilisateur créé", utilisateur });
     } catch (erreur) {
         console.error("Erreur lors de l'ajout d'utilisateur :", erreur);
         return res.status(500).json({ message: "Erreur interne" });

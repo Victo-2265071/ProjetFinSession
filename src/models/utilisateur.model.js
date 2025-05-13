@@ -28,7 +28,7 @@ function AjouterUtilisateur(nom, prenom, courriel, motdepasse, cleApi) {
     return new Promise((resolve, reject) => {
         const sql = `
             INSERT INTO utilisateurs (nom, prenom, courriel, password, cle_api)
-            VALUES ($1, $2, $3, $4, $5)
+            VALUES ($1, $2, $3, $4, $5) RETURNING *
         `;
         const valeurs = [nom, prenom, courriel, motdepasse, cleApi];
 
@@ -38,7 +38,7 @@ function AjouterUtilisateur(nom, prenom, courriel, motdepasse, cleApi) {
                 return reject(err);
             }
 
-            resolve(results.rows);
+            resolve(results.rows[0]);
         });
     });
 }
