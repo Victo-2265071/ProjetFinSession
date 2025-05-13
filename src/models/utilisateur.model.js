@@ -16,7 +16,7 @@ function ValidationCle(cleApi) {
                 return resolve(null); // Clé invalide
             }
 
-            return resolve(results[0].id); // Clé valide : retourne l'ID
+            return resolve(results.rows[0].id); // Clé valide : retourne l'ID
         });
     });
 }
@@ -38,7 +38,7 @@ function AjouterUtilisateur(nom, prenom, courriel, motdepasse, cleApi) {
                 return reject(err);
             }
 
-            resolve(results);
+            resolve(results.rows);
         });
     });
 }
@@ -49,7 +49,7 @@ function ObtenirCleApi(courriel) {
         const sql = "SELECT id, cle_api, password FROM utilisateurs WHERE courriel = $1";
         db.query(sql, [courriel], (err, results) => {
             if (err) return reject(err);
-            resolve(results[0]); // peut être undefined si non trouvé
+            resolve(results.rows[0]); // peut être undefined si non trouvé
         });
     });
 }
@@ -60,7 +60,7 @@ function MettreAJourCleApi(id, nouvelleCle) {
         const sql = "UPDATE utilisateurs SET cle_api = $1 WHERE id = $2";
         db.query(sql, [nouvelleCle, id], (err, results) => {
             if (err) return reject(err);
-            resolve(results);
+            resolve(results.rows);
         });
     });
 }
@@ -71,7 +71,7 @@ function CourrielExiste(courriel) {
         const sql = "SELECT id FROM utilisateurs WHERE courriel = $1";
         db.query(sql, [courriel], (err, results) => {
             if (err) return reject(err);
-            resolve(results.length > 0);
+            resolve(results.rows.length > 0);
         });
     });
 }

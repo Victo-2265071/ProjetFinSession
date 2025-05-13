@@ -17,7 +17,7 @@ function ObtenirTachesParUtilisateur(utilisateurId, toutes) {
                 console.error("Erreur SQL (ObtenirTachesParUtilisateur) :", err);
                 return reject(err);
             }
-            resolve(results);
+            resolve(results.rows);
         });
     });
 }
@@ -31,7 +31,7 @@ function ObtenirTachesDetailsParId(utilisateurId) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results);
+            resolve(results.rows);
         });
     });
 }
@@ -45,7 +45,7 @@ function CreerTache(utilisateurId, titre, description, dateEcheance) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results);
+            resolve(results.rows);
         });
     });
 }
@@ -59,7 +59,7 @@ function ModifierTache(tacheId, utilisateurId, titre, description, dateEcheance)
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results);
+            resolve(results.rows);
         });
     });
 }
@@ -73,7 +73,7 @@ function ModifierStatutTache(tacheId, utilisateurId, complete) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results);
+            resolve(results.rows);
         });
     });
 }
@@ -86,7 +86,7 @@ function SupprimerTache(tacheId, utilisateurId) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results);
+            resolve(results.rows);
         });
     });
 }
@@ -101,7 +101,7 @@ function CreerSousTache(tacheId, titre, utilisateurId) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results);
+            resolve(results.rows);
         });
     });
 }
@@ -115,7 +115,7 @@ function ModifierSousTache(sousTacheId, titre, utilisateurId) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results);
+            resolve(results.rows);
         });
     });
 }
@@ -129,7 +129,7 @@ function ModifierStatutSousTache(sousTacheId, utilisateurId, complete) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results);
+            resolve(results.rows);
         });
     });
 }
@@ -143,7 +143,7 @@ function SupprimerSousTache(sousTacheId, utilisateurId) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results);
+            resolve(results.rows);
         });
     });
 }
