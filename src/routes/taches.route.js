@@ -26,7 +26,7 @@ router.delete('/supprimersoustache/:id', authentification, supprimersoustache);
 router.post('/ajouterutilisateur', ajouterutilisateur);
 
 // Récupérer sa clé api ou en redemander une nouvelle
-router.get('/demandercle', demandercle);
+router.put('/demandercle', demandercle);
 
 
 export default router;
