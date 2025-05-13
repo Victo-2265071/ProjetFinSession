@@ -52,7 +52,10 @@ const modifiertache = async (req, res) => {
 
     try {
         const taches = await tachesModel.ModifierTache(tacheId, utilisateurId, titre, description, dateEcheance);
-        res.status(200).json(taches);
+        res.status(200).json({
+            message: "Tâche modifiée avec succès",
+            tache: taches
+    });
     } catch (err) {
         console.error("Erreur lors de la modification de la tâche :", err);
         res.status(500).json({ message: "Erreur serveur lors de la modification de la tâche." });

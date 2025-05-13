@@ -38,7 +38,7 @@ function ObtenirTachesDetailsParId(utilisateurId) {
 
 function CreerTache(utilisateurId, titre, description, dateEcheance) {
     return new Promise((resolve, reject) => {
-        let sql = "INSERT INTO taches (utilisateur_id, titre, description, date_debut, date_echeance, complete) VALUES ($1, $2, $3, NOW(), $4, false) RETURNING id";
+        let sql = "INSERT INTO taches (utilisateur_id, titre, description, date_debut, date_echeance, complete) VALUES ($1, $2, $3, NOW(), $4, false) RETURNING *";
 
         db.query(sql, [utilisateurId, titre, description, dateEcheance], (err, results) => {
             if (err) {
@@ -52,14 +52,14 @@ function CreerTache(utilisateurId, titre, description, dateEcheance) {
 
 function ModifierTache(tacheId, utilisateurId, titre, description, dateEcheance) {
     return new Promise((resolve, reject) => {
-        let sql = "UPDATE taches SET titre = $1, description = $2, date_echeance = $3 WHERE id = $4 AND utilisateur_id = $5";
+        let sql = "UPDATE taches SET titre = $1, description = $2, date_echeance = $3 WHERE id = $4 AND utilisateur_id = $5 RETURNING *";
 
         db.query(sql, [titre, description, dateEcheance, tacheId, utilisateurId], (err, results) => {
             if (err) {
                 console.error("Erreur SQL (ObtenirTachesParId) :", err);
                 return reject(err);
             }
-            resolve(results.rows);
+            resolve(results.rows[0]);
         });
     });
 }
