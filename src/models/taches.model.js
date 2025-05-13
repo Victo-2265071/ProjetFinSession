@@ -108,7 +108,7 @@ function CreerSousTache(tacheId, titre, utilisateurId) {
 
 function ModifierSousTache(sousTacheId, titre, utilisateurId) {
     return new Promise((resolve, reject) => {
-        let sql = "UPDATE sous_taches JOIN taches ON sous_taches.tache_id = taches.id SET sous_taches.titre = $1 WHERE sous_taches.id = $2 AND taches.utilisateur_id = $3 RETURNING *;";
+        let sql = "UPDATE sous_taches SET titre = $1 FROM taches WHERE sous_taches.tache_id = taches.id AND sous_taches.id = $2 AND taches.utilisateur_id = $3 RETURNING sous_taches.*";
 
         db.query(sql, [titre, sousTacheId, utilisateurId], (err, results) => {
             if (err) {
@@ -122,7 +122,7 @@ function ModifierSousTache(sousTacheId, titre, utilisateurId) {
 
 function ModifierStatutSousTache(sousTacheId, utilisateurId, complete) {
     return new Promise((resolve, reject) => {
-        let sql = "UPDATE sous_taches JOIN taches ON sous_taches.tache_id = taches.id SET sous_taches.complete = $1 WHERE sous_taches.id = $2 AND taches.utilisateur_id = $3 RETURNING *";
+        let sql = "UPDATE sous_taches SET complete = $1 FROM taches WHERE sous_taches.tache_id = taches.id AND sous_taches.id = $2 AND taches.utilisateur_id = $3 RETURNING sous_taches.*";
 
         db.query(sql, [complete, sousTacheId, utilisateurId], (err, results) => {
             if (err) {
@@ -136,7 +136,7 @@ function ModifierStatutSousTache(sousTacheId, utilisateurId, complete) {
 
 function SupprimerSousTache(sousTacheId, utilisateurId) {
     return new Promise((resolve, reject) => {
-        let sql = "DELETE sous_taches FROM sous_taches JOIN taches ON sous_taches.tache_id = taches.id WHERE sous_taches.id = $1 AND taches.utilisateur_id = $2 RETURNING *";
+        let sql = "DELETE FROM sous_taches USING taches WHERE sous_taches.tache_id = taches.id AND sous_taches.id = $1 AND taches.utilisateur_id = $2 RETURNING *";
 
         db.query(sql, [sousTacheId, utilisateurId], (err, results) => {
             if (err) {
