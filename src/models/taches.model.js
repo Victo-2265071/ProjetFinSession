@@ -14,7 +14,7 @@ function ObtenirTachesParUtilisateur(utilisateurId, toutes) {
 
         db.query(sql, [utilisateurId], (err, results) => {
             if (err) {
-                console.error("Erreur SQL (ObtenirTachesParUtilisateur) :", err);
+                console.error("Erreur SQL :", err);
                 return reject(err);
             }
             resolve(results.rows);
@@ -28,7 +28,7 @@ function ObtenirTachesDetailsParId(utilisateurId) {
 
         db.query(sql, [utilisateurId], (err, results) => {
             if (err) {
-                console.error("Erreur SQL (ObtenirTachesParId) :", err);
+                console.error("Erreur SQL :", err);
                 return reject(err);
             }
             resolve(results.rows);
@@ -42,7 +42,7 @@ function CreerTache(utilisateurId, titre, description, dateEcheance) {
 
         db.query(sql, [utilisateurId, titre, description, dateEcheance], (err, results) => {
             if (err) {
-                console.error("Erreur SQL (ObtenirTachesParId) :", err);
+                console.error("Erreur SQL :", err);
                 return reject(err);
             }
             resolve(results.rows[0]);
@@ -56,7 +56,7 @@ function ModifierTache(tacheId, utilisateurId, titre, description, dateEcheance)
 
         db.query(sql, [titre, description, dateEcheance, tacheId, utilisateurId], (err, results) => {
             if (err) {
-                console.error("Erreur SQL (ObtenirTachesParId) :", err);
+                console.error("Erreur SQL :", err);
                 return reject(err);
             }
             resolve(results.rows[0]);
@@ -70,7 +70,7 @@ function ModifierStatutTache(tacheId, utilisateurId, complete) {
 
         db.query(sql, [complete, tacheId, utilisateurId], (err, results) => {
             if (err) {
-                console.error("Erreur SQL (ObtenirTachesParId) :", err);
+                console.error("Erreur SQL :", err);
                 return reject(err);
             }
             resolve(results.rows[0]);
@@ -83,7 +83,7 @@ function SupprimerTache(tacheId, utilisateurId) {
         let sql = "DELETE FROM taches WHERE id = $1 AND utilisateur_id = $2 RETURNING *";
         db.query(sql, [tacheId, utilisateurId], (err, results) => {
             if (err) {
-                console.error("Erreur SQL (ObtenirTachesParId) :", err);
+                console.error("Erreur SQL :", err);
                 return reject(err);
             }
             resolve(results.rows[0]);
@@ -98,7 +98,7 @@ function CreerSousTache(tacheId, titre, utilisateurId) {
 
         db.query(sql, [titre, tacheId, utilisateurId], (err, results) => {
             if (err) {
-                console.error("Erreur SQL (ObtenirTachesParId) :", err);
+                console.error("Erreur SQL :", err);
                 return reject(err);
             }
             resolve(results.rows[0]);
@@ -112,7 +112,7 @@ function ModifierSousTache(sousTacheId, titre, utilisateurId) {
 
         db.query(sql, [titre, sousTacheId, utilisateurId], (err, results) => {
             if (err) {
-                console.error("Erreur SQL (ObtenirTachesParId) :", err);
+                console.error("Erreur SQL :", err);
                 return reject(err);
             }
             resolve(results.rows[0]);
@@ -126,7 +126,7 @@ function ModifierStatutSousTache(sousTacheId, utilisateurId, complete) {
 
         db.query(sql, [complete, sousTacheId, utilisateurId], (err, results) => {
             if (err) {
-                console.error("Erreur SQL (ObtenirTachesParId) :", err);
+                console.error("Erreur SQL :", err);
                 return reject(err);
             }
             resolve(results.rows[0]);
@@ -140,7 +140,7 @@ function SupprimerSousTache(sousTacheId, utilisateurId) {
 
         db.query(sql, [sousTacheId, utilisateurId], (err, results) => {
             if (err) {
-                console.error("Erreur SQL (ObtenirTachesParId) :", err);
+                console.error("Erreur SQL :", err);
                 return reject(err);
             }
             resolve(results.rows[0]);
