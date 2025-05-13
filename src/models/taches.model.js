@@ -9,7 +9,7 @@ function ObtenirTachesParUtilisateur(utilisateurId, toutes) {
         let sql = "SELECT id, titre FROM taches WHERE utilisateur_id = $1";
 
         if (!toutes) {
-            sql += " AND complete = 0";
+            sql += " AND complete = false";
         }
 
         db.query(sql, [utilisateurId], (err, results) => {
