@@ -86,8 +86,7 @@ const supprimertache = async (req, res) => {
     try {
         const taches = await tachesModel.SupprimerTache(tacheId, utilisateurId);
         res.status(200).json({
-            message: "Tâche supprimée avec succès",
-            tache: taches
+            message: "Tâche supprimée avec succès"
     });
     } catch (err) {
         console.error("Erreur lors de la suppression de la tâche :", err);
@@ -153,8 +152,7 @@ const supprimersoustache = async (req, res) => {
     try {
         const taches = await tachesModel.SupprimerSousTache(sousTacheId, utilisateurId);
         res.status(200).json({
-            message: "Sous-Tâche supprimée avec succès",
-            tache: taches
+            message: "Sous-Tâche supprimée avec succès"
     });
     } catch (err) {
         console.error("Erreur lors de la suppression de la tâche :", err);
