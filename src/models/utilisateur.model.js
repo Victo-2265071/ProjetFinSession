@@ -1,8 +1,6 @@
 import db from "../config/db.js";
 
-/**
- * Vérifie la validité d'une clé API et retourne l'ID de l'utilisateur associé
- */
+// Vérifie la validité d'une clé API et retourne l'ID de l'utilisateur associé
 function ValidationCle(cleApi) {
     return new Promise((resolve, reject) => {
         const sql = "SELECT id FROM utilisateurs WHERE cle_api = $1";
@@ -21,9 +19,7 @@ function ValidationCle(cleApi) {
     });
 }
 
-/**
- * Ajoute un nouvel utilisateur dans la base de données
- */
+// Ajoute un nouvel utilisateur
 function AjouterUtilisateur(nom, prenom, courriel, motdepasse, cleApi) {
     return new Promise((resolve, reject) => {
         const sql = `
@@ -43,13 +39,13 @@ function AjouterUtilisateur(nom, prenom, courriel, motdepasse, cleApi) {
     });
 }
 
-// Récupère la clé API + mot de passe à partir du courriel
+// Récupère la clé API et le mot de passe à partir du courriel
 function ObtenirCleApi(courriel) {
     return new Promise((resolve, reject) => {
         const sql = "SELECT id, cle_api, password FROM utilisateurs WHERE courriel = $1";
         db.query(sql, [courriel], (err, results) => {
             if (err) return reject(err);
-            resolve(results.rows[0]); // peut être undefined si non trouvé
+            resolve(results.rows[0]);
         });
     });
 }

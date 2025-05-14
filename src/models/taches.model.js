@@ -1,9 +1,6 @@
 // À ajuster selon la structure
 import db from '../config/db.js';
 
-/**
- * Récupère les tâches d'un utilisateur
- */
 function ObtenirTachesParUtilisateur(utilisateurId, toutes) {
     return new Promise((resolve, reject) => {
         let sql = "SELECT id, titre FROM taches WHERE utilisateur_id = $1";

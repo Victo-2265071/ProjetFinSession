@@ -2,7 +2,7 @@ import UtilisateurModel from "../models/utilisateur.model.js";
 
 const authentification = (req, res, next) => {
 
-    // Vérifier si la clé API est présente dans l'entête
+    // Vérifier si la clé API est dans l'entête
     if(!req.headers.authorization) {
         return res.status(401).json({ message: "Vous devez fournir une clé api" });
     }

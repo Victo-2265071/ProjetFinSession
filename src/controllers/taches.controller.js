@@ -181,19 +181,19 @@ const ajouterutilisateur = async (req, res) => {
     }
 
     try {
-        // 1. Vérifier si le courriel existe déjà
+        // Vérifier si le courriel existe déjà
         const existe = await utilisateurModel.CourrielExiste(courriel);
         if (existe) {
             return res.status(409).json({ message: "Un utilisateur avec ce courriel existe déjà" });
         }
 
-        // 2. Hasher le mot de passe
+        // Hasher le mot de passe
         const motdepasseHashe = await bcrypt.hash(motdepasse, 10);
 
-        // 3. Générer une clé API
+        // Générer une clé API
         const cle_api = crypto.randomBytes(12).toString("hex");
 
-        // 4. Ajouter l’utilisateur
+        // Ajouter l’utilisateur
         const utilisateur = await utilisateurModel.AjouterUtilisateur(nom, prenom, courriel, motdepasseHashe, cle_api);
 
         return res.status(201).json({ message: "Utilisateur créé", utilisateur });
@@ -211,27 +211,27 @@ const demandercle = async (req, res) => {
     }
 
     try {
-        // 1. Récupérer l'utilisateur et le mot de passe haché
+        // Récupérer l'utilisateur et le mot de passe haché
         const utilisateur = await utilisateurModel.ObtenirCleApi(courriel);
 
         if (!utilisateur) {
             return res.status(404).json({ message: "Utilisateur non trouvé" });
         }
 
-        // 2. Vérifier le mot de passe
+        // Vérifier le mot de passe
         const motDePasseValide = await bcrypt.compare(motdepasse, utilisateur.password);
         if (!motDePasseValide) {
             return res.status(401).json({ message: "Mot de passe invalide" });
         }
 
-        // 3. Générer une nouvelle clé API si demandé
+        // Générer une nouvelle clé API si demandé
         if (regenerer === true) {
             const nouvelleCle = crypto.randomBytes(15).toString("hex");
             await utilisateurModel.MettreAJourCleApi(utilisateur.id, nouvelleCle);
             return res.status(200).json({ message: "Nouvelle clé générée", cle_api: nouvelleCle });
         }
 
-        // 4. Retourner la clé existante
+        // Retourner la clé existante
         return res.status(200).json({ cle_api: utilisateur.cle_api });
 
     } catch (erreur) {
