@@ -17,7 +17,7 @@
             "description": "Serveur de développement"
         },
         {
-            "url": "https://projetfinsession.onrender.com/api/",
+            "url": "https://projetfinsession.onrender.com/",
             "description": "Serveur en ligne"
         }
     ],
@@ -229,6 +229,22 @@
                             }
                         }
                     },
+                    "401" : {
+                        "description": "Mauvaise clé d'API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Mauvaise clé d'API"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    },
                     "500" : {
                         "description": "Tâches non retrouvée",
                         "content": {
@@ -291,6 +307,22 @@
                                         "complete": false
                                     }
                                 ]
+                            }
+                        }
+                    },
+                    "401" : {
+                        "description": "Mauvaise clé d'API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Mauvaise clé d'API"
+                                        }
+                                    }
+                                }   
                             }
                         }
                     },
@@ -379,6 +411,22 @@
                                         }
                                     }
                                 ]
+                            }
+                        }
+                    },
+                    "401" : {
+                        "description": "Mauvaise clé d'API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Mauvaise clé d'API"
+                                        }
+                                    }
+                                }   
                             }
                         }
                     },
@@ -480,6 +528,22 @@
                             }
                         }
                     },
+                    "401" : {
+                        "description": "Mauvaise clé d'API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Mauvaise clé d'API"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    },
                     "500" : {
                         "description": "Tâche non modifiée",
                         "content": {
@@ -558,6 +622,22 @@
                             }
                         }
                     },
+                    "401" : {
+                        "description": "Mauvaise clé d'API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Mauvaise clé d'API"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    },
                     "500" : {
                         "description": "Statut non changé",
                         "content": {
@@ -614,6 +694,394 @@
                                         "message": "Tâche supprimée avec succès"
                                     }
                                 ]
+                            }
+                        }
+                    },
+                    "401" : {
+                        "description": "Mauvaise clé d'API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Mauvaise clé d'API"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description": "Tâche non supprimée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur interne"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+
+
+
+        "/api/taches/ajoutersoustache": {
+            "post": {
+                "summary": "Crée une sous-tâche",
+                "tags": ["Tâches"],
+                "description": "Crée une sous-tâche associée à une tâche par son id. La tâche doit appartenir à un utilisateur via sa clé d'API",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "cle_api suivi de la clé d'API de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Le id de la tâche parent",
+                        "required": true,
+                        "schema": {
+                            "type": "int",
+                            "exemple" : "7"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "titre",
+                        "description": "Le titre de la sous-tâche",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "Titre de sous-tâche"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sous-tâche créée avec succes",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "message": "Sous-Tâche ajoutée avec succès"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401" : {
+                        "description": "Mauvaise clé d'API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Mauvaise clé d'API"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description": "Tâche non créée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur interne"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/taches/modifiersoustache/{id}": {
+            "put": {
+                "summary": "Modifier une tâche",
+                "tags": ["Tâches"],
+                "description": "Modifie une tâche associée à l'utilisateur par sa clé d'api et son ID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "cle_api suivi de la clé d'API de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "L'id de la tâche à détailler",
+                        "required": true,
+                        "schema": {
+                            "type": "int",
+                            "exemple" : "1"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "titre",
+                        "description": "Le titre de la tâche",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "Titre de tâche"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "description",
+                        "description": "Une description de la tâche",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "Description complète de tâche"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "dateEcheance",
+                        "description": "La date d'échéance de la tâche",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "2025-05-30"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tâche modifiée avec succes",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "message": "Tâche modifiée avec succès",
+                                        "tache": {
+                                            "id": 7,
+                                            "utilisateur_id": 2,
+                                            "titre": "Modifiée sur Postman",
+                                            "description": "Cette tâche a été modifiée sur Postman",
+                                            "date_debut": "2025-05-14T00:00:00.000Z",
+                                            "date_echeance": "2025-05-20T00:00:00.000Z",
+                                            "complete": false
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401" : {
+                        "description": "Mauvaise clé d'API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Mauvaise clé d'API"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description": "Tâche non modifiée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur interne"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/taches/modifierstatutsoustache/{id}": {
+            "put": {
+                "summary": "Change le statut d'une tâche",
+                "tags": ["Tâches"],
+                "description": "Change le statut d'une tâche associée à l'utilisateur par sa clé d'api et son ID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "cle_api suivi de la clé d'API de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "L'id de la tâche à détailler",
+                        "required": true,
+                        "schema": {
+                            "type": "int",
+                            "exemple" : "1"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "complete",
+                        "description": "0 ou 1 si la tâche est complétée ou non",
+                        "required": true,
+                        "schema": {
+                            "type": "int",
+                            "exemple" : "1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Statut de la tâche changé avec succes",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "message": "Statut modifié avec succès",
+                                        "tache": {
+                                            "id": 7,
+                                            "utilisateur_id": 2,
+                                            "titre": "Modifiée sur Postman",
+                                            "description": "Cette tâche a été modifiée sur Postman",
+                                            "date_debut": "2025-05-14T00:00:00.000Z",
+                                            "date_echeance": "2025-05-20T00:00:00.000Z",
+                                            "complete": true
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401" : {
+                        "description": "Mauvaise clé d'API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Mauvaise clé d'API"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description": "Statut non changé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur interne"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/taches/supprimersoustache/{id}": {
+            "delete": {
+                "summary": "Supprime une tâche",
+                "tags": ["Tâches"],
+                "description": "Supprime une tâche associée à l'utilisateur par sa clé d'api et son ID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "cle_api suivi de la clé d'API de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "L'id de la tâche à détailler",
+                        "required": true,
+                        "schema": {
+                            "type": "int",
+                            "exemple" : "1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tâche supprimée avec succes",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "message": "Tâche supprimée avec succès"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401" : {
+                        "description": "Mauvaise clé d'API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Mauvaise clé d'API"
+                                        }
+                                    }
+                                }   
                             }
                         }
                     },
