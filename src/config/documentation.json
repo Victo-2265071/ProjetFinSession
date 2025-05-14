@@ -39,8 +39,7 @@
                         "name": "nom",
                         "description": "Nom de l'utilisateur",
                         "schema": {
-                            "type": "string",
-                            "enum": [ "fr", "en", "es", "de" ]
+                            "type": "string"
                         },
                         "required": true
                     },
@@ -49,8 +48,7 @@
                         "name": "prenom",
                         "description": "Prénom de l'utilisateur",
                         "schema": {
-                            "type": "string",
-                            "enum": [ "fr", "en", "es", "de" ]
+                            "type": "string"
                         },
                         "required": true
                     },
@@ -59,8 +57,7 @@
                         "name": "courriel",
                         "description": "Courriel de l'utilisateur",
                         "schema": {
-                            "type": "string",
-                            "enum": [ "fr", "en", "es", "de" ]
+                            "type": "string"
                         },
                         "required": true
                     },
@@ -69,8 +66,7 @@
                         "name": "motdepasse",
                         "description": "Mot de passe de l'utilisateur",
                         "schema": {
-                            "type": "string",
-                            "enum": [ "fr", "en", "es", "de" ]
+                            "type": "string"
                         },
                         "required": true
                     }
@@ -96,19 +92,15 @@
                             }
                         }
                     },
-                    "404" : {
-                        "description": "Code de langue non trouvé",
+                    "500" : {
+                        "description": "Erreur interne du serveur",
                         "content": {
                             "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Erreur, le code de langue [fr] n'existe pas"
-                                        }
+                                "example": [
+                                    {
+                                        "message": "Erreur interne"
                                     }
-                                }
+                                ]
                             }
                         }
                     }
