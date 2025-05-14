@@ -189,7 +189,7 @@
 
 
         "/api/taches/affichertaches": {
-            "put": {
+            "get": {
                 "summary": "Récupérer les tâches d'un utilisateur",
                 "tags": ["Tâches"],
                 "description": "Récupérer toutes les tâches d'un utilisateur ou seulement celles qui sont pas terminées",
@@ -221,15 +221,16 @@
                         "content": {
                             "application/json": {
                                 "example": [
-                                        {
-                                            "cle_api": "cac70ffd52b572fb10310991122d82"
-                                        }
+                                    {
+                                        "id": 7,
+                                        "titre": "Titre de la tâche"
+                                    }
                                 ]
                             }
                         }
                     },
                     "500" : {
-                        "description": "Clé d'API non retrouvée",
+                        "description": "Tâches non retrouvée",
                         "content": {
                             "application/json": {
                                 "schema": {
