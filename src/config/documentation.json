@@ -128,7 +128,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "courriel@mail.com"
+                            "example" : "courriel@mail.com"
                         }
                     },
                     {
@@ -138,7 +138,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "qWeRtY123"
+                            "example" : "qWeRtY123"
                         }
                     },
                     {
@@ -148,7 +148,7 @@
                         "required": false,
                         "schema": {
                             "type": "boolean",
-                            "exemple" : "true"
+                            "example" : "true"
                         }
                     }
                 ],
@@ -201,7 +201,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                            "example" : "cle_api 1a89800ce7f97904a61f2212"
                         }
                     },
                     {
@@ -211,7 +211,7 @@
                         "required": false,
                         "schema": {
                             "type": "boolean",
-                            "exemple" : "true"
+                            "example" : "true"
                         }
                     }
                 ],
@@ -277,7 +277,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                            "example" : "cle_api 1a89800ce7f97904a61f2212"
                         }
                     },
                     {
@@ -287,7 +287,7 @@
                         "required": true,
                         "schema": {
                             "type": "int",
-                            "exemple" : "1"
+                            "example" : "1"
                         }
                     }
                 ],
@@ -358,7 +358,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                            "example" : "cle_api 1a89800ce7f97904a61f2212"
                         }
                     },
                     {
@@ -368,7 +368,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "Titre de tâche"
+                            "example" : "Titre de tâche"
                         }
                     },
                     {
@@ -378,7 +378,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "Description complète de tâche"
+                            "example" : "Description complète de tâche"
                         }
                     },
                     {
@@ -388,7 +388,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "2025-05-30"
+                            "example" : "2025-05-30"
                         }
                     }
                 ],
@@ -462,17 +462,17 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                            "example" : "cle_api 1a89800ce7f97904a61f2212"
                         }
                     },
                     {
                         "in": "path",
                         "name": "id",
-                        "description": "L'id de la tâche à détailler",
+                        "description": "L'id de la tâche à modifier",
                         "required": true,
                         "schema": {
                             "type": "int",
-                            "exemple" : "1"
+                            "example" : "1"
                         }
                     },
                     {
@@ -482,7 +482,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "Titre de tâche"
+                            "example" : "Titre de tâche"
                         }
                     },
                     {
@@ -492,7 +492,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "Description complète de tâche"
+                            "example" : "Description complète de tâche"
                         }
                     },
                     {
@@ -502,7 +502,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "2025-05-30"
+                            "example" : "2025-05-30"
                         }
                     }
                 ],
@@ -576,7 +576,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                            "example" : "cle_api 1a89800ce7f97904a61f2212"
                         }
                     },
                     {
@@ -586,7 +586,7 @@
                         "required": true,
                         "schema": {
                             "type": "int",
-                            "exemple" : "1"
+                            "example" : "1"
                         }
                     },
                     {
@@ -596,7 +596,7 @@
                         "required": true,
                         "schema": {
                             "type": "int",
-                            "exemple" : "1"
+                            "example" : "1"
                         }
                     }
                 ],
@@ -670,7 +670,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                            "example" : "cle_api 1a89800ce7f97904a61f2212"
                         }
                     },
                     {
@@ -680,7 +680,7 @@
                         "required": true,
                         "schema": {
                             "type": "int",
-                            "exemple" : "1"
+                            "example" : "1"
                         }
                     }
                 ],
@@ -740,7 +740,7 @@
             "post": {
                 "summary": "Crée une sous-tâche",
                 "tags": ["Sous-Tâches"],
-                "description": "Crée une sous-tâche associée à une tâche par son id. La tâche doit appartenir à un utilisateur via sa clé d'API",
+                "description": "Crée une sous-tâche associée à une tâche par son id. La tâche parent doit appartenir à un utilisateur via sa clé d'API",
                 "parameters": [
                     {
                         "in": "header",
@@ -749,7 +749,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                            "example" : "cle_api 1a89800ce7f97904a61f2212"
                         }
                     },
                     {
@@ -759,7 +759,7 @@
                         "required": true,
                         "schema": {
                             "type": "int",
-                            "exemple" : "7"
+                            "example" : "7"
                         }
                     },
                     {
@@ -769,7 +769,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "Titre de sous-tâche"
+                            "example" : "Titre de sous-tâche"
                         }
                     }
                 ],
@@ -823,9 +823,9 @@
         },
         "/api/taches/modifiersoustache/{id}": {
             "put": {
-                "summary": "Modifier une tâche",
+                "summary": "Modifier une sous-tâche",
                 "tags": ["Sous-Tâches"],
-                "description": "Modifie une tâche associée à l'utilisateur par sa clé d'api et son ID",
+                "description": "Modifie une sous-tâche associée à une tâche par son id. La tâche parent doit appartenir à un utilisateur via sa clé d'API",
                 "parameters": [
                     {
                         "in": "header",
@@ -834,67 +834,38 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                            "example" : "cle_api 1a89800ce7f97904a61f2212"
                         }
                     },
                     {
                         "in": "path",
                         "name": "id",
-                        "description": "L'id de la tâche à détailler",
+                        "description": "L'id de la sous-tâche à modifier",
                         "required": true,
                         "schema": {
                             "type": "int",
-                            "exemple" : "1"
+                            "example" : "1"
                         }
                     },
                     {
                         "in": "query",
                         "name": "titre",
-                        "description": "Le titre de la tâche",
+                        "description": "Le titre de la sous-tâche",
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "Titre de tâche"
-                        }
-                    },
-                    {
-                        "in": "query",
-                        "name": "description",
-                        "description": "Une description de la tâche",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "exemple" : "Description complète de tâche"
-                        }
-                    },
-                    {
-                        "in": "query",
-                        "name": "dateEcheance",
-                        "description": "La date d'échéance de la tâche",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "exemple" : "2025-05-30"
+                            "example" : "Titre de tâche"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Tâche modifiée avec succes",
+                        "description": "Sous-tâche modifiée avec succes",
                         "content": {
                             "application/json": {
                                 "example": [
                                     {
-                                        "message": "Tâche modifiée avec succès",
-                                        "tache": {
-                                            "id": 7,
-                                            "utilisateur_id": 2,
-                                            "titre": "Modifiée sur Postman",
-                                            "description": "Cette tâche a été modifiée sur Postman",
-                                            "date_debut": "2025-05-14T00:00:00.000Z",
-                                            "date_echeance": "2025-05-20T00:00:00.000Z",
-                                            "complete": false
-                                        }
+                                        "message": "Sous-Tâche modifiée avec succès"
                                     }
                                 ]
                             }
@@ -917,7 +888,7 @@
                         }
                     },
                     "500" : {
-                        "description": "Tâche non modifiée",
+                        "description": "Sous-tâche non modifiée",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -937,9 +908,9 @@
         },
         "/api/taches/modifierstatutsoustache/{id}": {
             "put": {
-                "summary": "Change le statut d'une tâche",
+                "summary": "Change le statut d'une sous-tâche",
                 "tags": ["Sous-Tâches"],
-                "description": "Change le statut d'une tâche associée à l'utilisateur par sa clé d'api et son ID",
+                "description": "Change le statut d'une sous-tâche associée à l'utilisateur par sa clé d'api via son ID",
                 "parameters": [
                     {
                         "in": "header",
@@ -948,47 +919,38 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                            "example" : "cle_api 1a89800ce7f97904a61f2212"
                         }
                     },
                     {
                         "in": "path",
                         "name": "id",
-                        "description": "L'id de la tâche à détailler",
+                        "description": "L'id de la sous-tâche à détailler",
                         "required": true,
                         "schema": {
                             "type": "int",
-                            "exemple" : "1"
+                            "example" : "1"
                         }
                     },
                     {
                         "in": "query",
                         "name": "complete",
-                        "description": "0 ou 1 si la tâche est complétée ou non",
+                        "description": "0 ou 1 si la sous-tâche est complétée ou non",
                         "required": true,
                         "schema": {
                             "type": "int",
-                            "exemple" : "1"
+                            "example" : "1"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Statut de la tâche changé avec succes",
+                        "description": "Statut de la sous-tâche changé avec succes",
                         "content": {
                             "application/json": {
                                 "example": [
                                     {
-                                        "message": "Statut modifié avec succès",
-                                        "tache": {
-                                            "id": 7,
-                                            "utilisateur_id": 2,
-                                            "titre": "Modifiée sur Postman",
-                                            "description": "Cette tâche a été modifiée sur Postman",
-                                            "date_debut": "2025-05-14T00:00:00.000Z",
-                                            "date_echeance": "2025-05-20T00:00:00.000Z",
-                                            "complete": true
-                                        }
+                                        "message": "Statut modifiée avec succès"
                                     }
                                 ]
                             }
@@ -1031,9 +993,9 @@
         },
         "/api/taches/supprimersoustache/{id}": {
             "delete": {
-                "summary": "Supprime une tâche",
+                "summary": "Supprime une sous-tâche",
                 "tags": ["Sous-Tâches"],
-                "description": "Supprime une tâche associée à l'utilisateur par sa clé d'api et son ID",
+                "description": "Supprime une sous-tâche associée à l'utilisateur par sa clé d'api via son ID",
                 "parameters": [
                     {
                         "in": "header",
@@ -1042,28 +1004,28 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                            "example" : "cle_api 1a89800ce7f97904a61f2212"
                         }
                     },
                     {
                         "in": "path",
                         "name": "id",
-                        "description": "L'id de la tâche à détailler",
+                        "description": "L'id de la sous-tâche à supprimer",
                         "required": true,
                         "schema": {
                             "type": "int",
-                            "exemple" : "1"
+                            "example" : "1"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Tâche supprimée avec succes",
+                        "description": "Sous-tâche supprimée avec succes",
                         "content": {
                             "application/json": {
                                 "example": [
                                     {
-                                        "message": "Tâche supprimée avec succès"
+                                        "message": "Sous-tâche supprimée avec succès"
                                     }
                                 ]
                             }
@@ -1086,7 +1048,7 @@
                         }
                     },
                     "500" : {
-                        "description": "Tâche non supprimée",
+                        "description": "Sous-tâche non supprimée",
                         "content": {
                             "application/json": {
                                 "schema": {
