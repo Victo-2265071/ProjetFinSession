@@ -28,6 +28,10 @@
                 "tags": ["Documentation"]
             }
         },
+
+
+
+
         "/api/taches/ajouterutilisateur": {
             "post": {
                 "summary": "Créer un utilisateur",
@@ -143,7 +147,7 @@
                         "description": "Regénérer une nouvelle clé d'API",
                         "required": false,
                         "schema": {
-                            "type": "bool",
+                            "type": "boolean",
                             "exemple" : "true"
                         }
                     }
@@ -151,6 +155,69 @@
                 "responses": {
                     "200": {
                         "description": "Clé d'API retrouvée avec succes",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                        {
+                                            "cle_api": "cac70ffd52b572fb10310991122d82"
+                                        }
+                                ]
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description": "Clé d'API non retrouvée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur interne"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+
+
+
+        "/api/taches/affichertaches": {
+            "put": {
+                "summary": "Récupérer les tâches d'un utilisateur",
+                "tags": ["Tâches"],
+                "description": "Récupérer toutes les tâches d'un utilisateur ou seulement celles qui sont pas terminées",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "cle_api suivi de la clé d'API de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "toutes",
+                        "description": "Déclare si on extraits les taches terminées aussi",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean",
+                            "exemple" : "true"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tâches retrouvée avec succes",
                         "content": {
                             "application/json": {
                                 "example": [
