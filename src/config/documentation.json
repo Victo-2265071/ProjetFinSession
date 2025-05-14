@@ -739,7 +739,7 @@
         "/api/taches/ajoutersoustache": {
             "post": {
                 "summary": "Crée une sous-tâche",
-                "tags": ["Tâches"],
+                "tags": ["Sous-Tâches"],
                 "description": "Crée une sous-tâche associée à une tâche par son id. La tâche doit appartenir à un utilisateur via sa clé d'API",
                 "parameters": [
                     {
@@ -824,7 +824,7 @@
         "/api/taches/modifiersoustache/{id}": {
             "put": {
                 "summary": "Modifier une tâche",
-                "tags": ["Tâches"],
+                "tags": ["Sous-Tâches"],
                 "description": "Modifie une tâche associée à l'utilisateur par sa clé d'api et son ID",
                 "parameters": [
                     {
@@ -938,7 +938,7 @@
         "/api/taches/modifierstatutsoustache/{id}": {
             "put": {
                 "summary": "Change le statut d'une tâche",
-                "tags": ["Tâches"],
+                "tags": ["Sous-Tâches"],
                 "description": "Change le statut d'une tâche associée à l'utilisateur par sa clé d'api et son ID",
                 "parameters": [
                     {
@@ -1032,7 +1032,7 @@
         "/api/taches/supprimersoustache/{id}": {
             "delete": {
                 "summary": "Supprime une tâche",
-                "tags": ["Tâches"],
+                "tags": ["Sous-Tâches"],
                 "description": "Supprime une tâche associée à l'utilisateur par sa clé d'api et son ID",
                 "parameters": [
                     {
