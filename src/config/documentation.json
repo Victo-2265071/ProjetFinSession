@@ -39,7 +39,8 @@
                         "name": "nom",
                         "description": "Nom de l'utilisateur",
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example" : "Raymond"
                         },
                         "required": true
                     },
@@ -48,7 +49,8 @@
                         "name": "prenom",
                         "description": "Prénom de l'utilisateur",
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example" : "Maxime"
                         },
                         "required": true
                     },
@@ -57,7 +59,8 @@
                         "name": "courriel",
                         "description": "Courriel de l'utilisateur",
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example" : "courriel@mail.com"
                         },
                         "required": true
                     },
@@ -66,7 +69,8 @@
                         "name": "motdepasse",
                         "description": "Mot de passe de l'utilisateur",
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "example" : "qWeRtY123"
                         },
                         "required": true
                     }
@@ -105,136 +109,60 @@
                         }
                     }
                 }
-            },
-            "get": {
-                "summary": "Ajouter une salutation",
-                "tags": ["Salutations"],
-                "description": "Ajouter une salutation en fournissant un code de langue, la langue et un message",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "code_langue": {
-                                        "type": "string",
-                                        "example": "fr"
-                                    },
-                                    "langue": {
-                                        "type": "string",
-                                        "example": "Français"
-                                    },
-                                    "message": {
-                                        "type": "string",
-                                        "example": "La nouvelle salutation"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Salutation ajoutée avec succésses",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Salutation ajoutée"
-                                        },
-                                        "salutation": {
-                                            "type": "string",
-                                            "example": "La nouvelle salutation"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Erreur de paramètres manquants",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Erreur, les paramètres code_langue, langue et message sont obligatoires"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "500" : {
-                        "description": "Erreur serveur",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Echec lors de l'ajout de la salutation."
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             }
         },
-        "/api/salutations/{id}": {
-            "get": {
-                "summary": "Récupérer une salutation",
-                "tags": ["Salutations"],
-                "description": "Récupérer une salutation en fonction de son id",
+        "/api/taches/demandercle/": {
+            "put": {
+                "summary": "Récupérer une clé d'API",
+                "tags": ["Utilisateur"],
+                "description": "Récupérer une clé d'API d'un utilisateur",
                 "parameters": [
                     {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id de la salutation",
+                        "in": "query",
+                        "name": "courriel",
+                        "description": "Courriel de l'utilisateur",
                         "required": true,
                         "schema": {
-                            "type": "integer",
-                            "format": "int32",
-                            "exemple" : "1"
+                            "type": "string",
+                            "exemple" : "courriel@mail.com"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "motdepasse",
+                        "description": "Mot de passe de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "qWeRtY123"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "regenerer",
+                        "description": "Regénérer une nouvelle clé d'API",
+                        "required": false,
+                        "schema": {
+                            "type": "bool",
+                            "exemple" : "true"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Salutation retrouvée avec succes",
+                        "description": "Clé d'API retrouvée avec succes",
                         "content": {
                             "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "code_langue": {
-                                            "type": "string",
-                                            "example": "fr"
-                                        },
-                                        "langue": {
-                                            "type": "string",
-                                            "example": "Français"
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Bonjour le monde"
+                                "example": [
+                                        {
+                                            "cle_api": "cac70ffd52b572fb10310991122d82"
                                         }
-                                    }
-                                }
+                                ]
                             }
                         }
                     },
-                    "404" : {
-                        "description": "Salutation non rencontrée",
+                    "500" : {
+                        "description": "Clé d'API non retrouvée",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -242,7 +170,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Erreur, la salutation [id] n'existe pas"
+                                            "example": "Erreur interne"
                                         }
                                     }
                                 }   
