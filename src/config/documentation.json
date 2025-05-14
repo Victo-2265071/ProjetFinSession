@@ -578,7 +578,7 @@
             }
         },
         "/api/taches/supprimertache/{id}": {
-            "put": {
+            "delete": {
                 "summary": "Supprime une tâche",
                 "tags": ["Tâches"],
                 "description": "Supprime une tâche associée à l'utilisateur par sa clé d'api et son ID",
