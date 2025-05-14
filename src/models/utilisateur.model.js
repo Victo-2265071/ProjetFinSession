@@ -12,7 +12,7 @@ function ValidationCle(cleApi) {
                 return reject(err);
             }
 
-            if (results.length === 0) {
+            if (results.rows.length === 0) {
                 return resolve(null); // Clé invalide
             }
 
