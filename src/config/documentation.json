@@ -217,7 +217,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Tâches retrouvée avec succes",
+                        "description": "Tâches retrouvées avec succes",
                         "content": {
                             "application/json": {
                                 "example": [
@@ -231,6 +231,335 @@
                     },
                     "500" : {
                         "description": "Tâches non retrouvée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur interne"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/taches/afficherdetails/{id}": {
+            "get": {
+                "summary": "Récupérer le detail d'une tâche",
+                "tags": ["Tâches"],
+                "description": "Récupère tous les détails d'une tâche",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "cle_api suivi de la clé d'API de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "L'id de la tâche à détailler",
+                        "required": true,
+                        "schema": {
+                            "type": "int",
+                            "exemple" : "1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tâche détaillée avec succes",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "id": 7,
+                                        "utilisateur_id": 2,
+                                        "titre": "Créé sur Postman",
+                                        "description": "Cette tâche a été créée sur Postman",
+                                        "date_debut": "2025-05-14T00:00:00.000Z",
+                                        "date_echeance": "2025-05-15T00:00:00.000Z",
+                                        "complete": false
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description": "Tâche non retrouvée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur interne"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/taches/ajoutertache": {
+            "post": {
+                "summary": "Crée une tâche",
+                "tags": ["Tâches"],
+                "description": "Crée une tâche associée à l'utilisateur par sa clé d'api",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "cle_api suivi de la clé d'API de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "titre",
+                        "description": "Le titre de la tâche",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "Titre de tâche"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "description",
+                        "description": "Une description de la tâche",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "Description complète de tâche"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "dateEcheance",
+                        "description": "La date d'échéance de la tâche",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "2025-05-30"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tâche créée avec succes",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "message": "Tâche créée avec succès",
+                                        "tache": {
+                                            "id": 7,
+                                            "utilisateur_id": 2,
+                                            "titre": "Créé sur Postman",
+                                            "description": "Cette tâche a été créée sur Postman",
+                                            "date_debut": "2025-05-14T00:00:00.000Z",
+                                            "date_echeance": "2025-05-15T00:00:00.000Z",
+                                            "complete": false
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description": "Tâche non créée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur interne"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/taches/modifiertache/{id}": {
+            "put": {
+                "summary": "Modifier une tâche",
+                "tags": ["Tâches"],
+                "description": "Modifie une tâche associée à l'utilisateur par sa clé d'api et son ID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "cle_api suivi de la clé d'API de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "L'id de la tâche à détailler",
+                        "required": true,
+                        "schema": {
+                            "type": "int",
+                            "exemple" : "1"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "titre",
+                        "description": "Le titre de la tâche",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "Titre de tâche"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "description",
+                        "description": "Une description de la tâche",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "Description complète de tâche"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "dateEcheance",
+                        "description": "La date d'échéance de la tâche",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "2025-05-30"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tâche modifiée avec succes",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "message": "Tâche modifiée avec succès",
+                                        "tache": {
+                                            "id": 7,
+                                            "utilisateur_id": 2,
+                                            "titre": "Modifiée sur Postman",
+                                            "description": "Cette tâche a été modifiée sur Postman",
+                                            "date_debut": "2025-05-14T00:00:00.000Z",
+                                            "date_echeance": "2025-05-20T00:00:00.000Z",
+                                            "complete": false
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description": "Tâche non modifiée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur interne"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/taches/modifierstatuttache/{id}": {
+            "put": {
+                "summary": "Change le statut d'une tâche",
+                "tags": ["Tâches"],
+                "description": "Change le statut d'une tâche associée à l'utilisateur par sa clé d'api et son ID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "cle_api suivi de la clé d'API de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "L'id de la tâche à détailler",
+                        "required": true,
+                        "schema": {
+                            "type": "int",
+                            "exemple" : "1"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "complete",
+                        "description": "0 ou 1 si la tâche est complétée ou non",
+                        "required": true,
+                        "schema": {
+                            "type": "int",
+                            "exemple" : "1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Statut de la tâche changé avec succes",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "message": "Statut modifié avec succès",
+                                        "tache": {
+                                            "id": 7,
+                                            "utilisateur_id": 2,
+                                            "titre": "Modifiée sur Postman",
+                                            "description": "Cette tâche a été modifiée sur Postman",
+                                            "date_debut": "2025-05-14T00:00:00.000Z",
+                                            "date_echeance": "2025-05-20T00:00:00.000Z",
+                                            "complete": true
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description": "Statut non changé",
                         "content": {
                             "application/json": {
                                 "schema": {
