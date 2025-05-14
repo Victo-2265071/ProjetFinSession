@@ -14,8 +14,8 @@ app.use(express.json());
 const swaggerDocument = JSON.parse(fs.readFileSync('./src/config/documentation.json', 'utf8'));
 
 const swaggerOptions = {
-    customCss: '.swagger-ui .topbar { display: none }',
-    customSiteTitle: "Projet Final SW25 - William Champagne"
+    customCss : '.swagger-ui .topbar { display: none }',
+    customSiteTitle : "Projet Final SW25 - William Champagne"
 };
 
 //Configuration de morgan

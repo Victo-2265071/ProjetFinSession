@@ -1,7 +1,14 @@
 {
     "openapi": "3.1.0",
-    "info":{
-        "title": "Démo API",
-        "version": "1.0.0"
+    "info" : {
+        "title": "Projet Session SW25 - William Champagne",
+        "summary": "Propose une gestion de tâches simple et complète",
+        "description": "Permet la gestion d'utilisateurs. Ces utilisateurs peuvent créer, modifier, supprimer des tâches. Ces tâches ont elles-mêmes des options d'ajouts, suppression et modification",
+        "contact": {
+            "name": "William Champagne",
+            "url": "https://projetfinsession.onrender.com/api/docs/",
+            "email": "2265071@etudiant.cegepvicto.ca"
+        },
+        "version": "1.0.1"
     }
 }
