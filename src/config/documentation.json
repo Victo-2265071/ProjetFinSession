@@ -736,7 +736,7 @@
 
 
 
-        "/api/taches/ajoutersoustache": {
+        "/api/taches/ajoutersoustache/{id}": {
             "post": {
                 "summary": "Crée une sous-tâche",
                 "tags": ["Sous-Tâches"],
