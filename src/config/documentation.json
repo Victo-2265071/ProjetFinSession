@@ -576,6 +576,65 @@
                     }
                 }
             }
+        },
+        "/api/taches/supprimertache/{id}": {
+            "put": {
+                "summary": "Supprime une tâche",
+                "tags": ["Tâches"],
+                "description": "Supprime une tâche associée à l'utilisateur par sa clé d'api et son ID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "cle_api suivi de la clé d'API de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "exemple" : "cle_api 1a89800ce7f97904a61f2212"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "L'id de la tâche à détailler",
+                        "required": true,
+                        "schema": {
+                            "type": "int",
+                            "exemple" : "1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tâche supprimée avec succes",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "message": "Tâche supprimée avec succès"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description": "Tâche non supprimée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur interne"
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
