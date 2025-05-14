@@ -22,61 +22,77 @@
         }
     ],
     "paths": {
-        "/api": {
+        "/api/docs": {
             "get": {
-                "summary": "Message de bienvenue",
-                "tags": ["Accueil"],
-                "responses": {
-                    "200": {
-                        "description": "Retourne un message de bienvenue",
-                        "content": {
-                            "text/html": {
-                                "example": "<h1>Mon premier serveur web sur express !</h1>"
-                            }
-                        }
-                    }
-                }
+                "summary": "Cette page de documentation",
+                "tags": ["Documentation"]
             }
         },
-        "/api/salutations": {
-            "get": {
-                "summary": "Récupérer une salutation aléatoire",
-                "tags": ["Salutations"],
-                "description": "Récupérer une salutation aléatoire en fonction de la langue d'un code de langue",
+        "/api/taches/ajouterutilisateur": {
+            "post": {
+                "summary": "Créer un utilisateur",
+                "tags": ["Utilisateur"],
+                "description": "Permet de créer un utilisateur",
                 "parameters": [
                     {
                         "in": "query",
-                        "name": "langue",
-                        "description": "Code souhaité de langue de la salutation. Seulement les codes présent par défaut sont énumérés, d'autres peuvent être présents.",
+                        "name": "nom",
+                        "description": "Nom de l'utilisateur",
                         "schema": {
                             "type": "string",
                             "enum": [ "fr", "en", "es", "de" ]
                         },
-                        "required": false
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "prenom",
+                        "description": "Prénom de l'utilisateur",
+                        "schema": {
+                            "type": "string",
+                            "enum": [ "fr", "en", "es", "de" ]
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "courriel",
+                        "description": "Courriel de l'utilisateur",
+                        "schema": {
+                            "type": "string",
+                            "enum": [ "fr", "en", "es", "de" ]
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "motdepasse",
+                        "description": "Mot de passe de l'utilisateur",
+                        "schema": {
+                            "type": "string",
+                            "enum": [ "fr", "en", "es", "de" ]
+                        },
+                        "required": true
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Salutation aléatoire récupérée avec succès",
+                        "description": "Création de l'utilisateur réussie",
                         "content": {
                             "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "code_langue": {
-                                            "type": "string",
-                                            "example": "fr"
-                                        },
-                                        "langue": {
-                                            "type": "string",
-                                            "example": "Français"
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Bonjour le monde"
+                                "example": [
+                                    {
+                                        "message": "Utilisateur créé",
+                                        "utilisateur": {
+                                            "id": 6,
+                                            "nom": "Utilisateur",
+                                            "prenom": "Test",
+                                            "courriel": "Courriel3@test.com",
+                                            "cle_api": "a6e95789c04194c106a68067",
+                                            "password": "$2b$10$QX3/3HM88IwYdxF33ElAzeyhVedA5Lfk17WNg3MFh66RRFlA4S93S"
                                         }
                                     }
-                                }
+                                ]
                             }
                         }
                     },
@@ -98,7 +114,7 @@
                     }
                 }
             },
-            "post": {
+            "get": {
                 "summary": "Ajouter une salutation",
                 "tags": ["Salutations"],
                 "description": "Ajouter une salutation en fournissant un code de langue, la langue et un message",
